@@ -4,7 +4,7 @@ A cute movie search website built with **React**. Find movies, browse results, a
 
 ## 📸 Screenshot
 
-![Mochi Movies Screenshot](mochi_movies_ss.png)
+![Mochi Movies Screenshot](./mochi_movies_ss.png)
 
 ## ✨ Features
 
