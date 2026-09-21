@@ -1,24 +1,52 @@
 import MovieCard from "../components/MovieCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "../css/Home.css";
+import { getMovies, searchMovies } from "../services/api";
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const movies = [
-    { id: 1, title: "John Wick", release_date: "2020" },
-    { id: 2, title: "Avatar", release_date: "2018" },
-    { id: 3, title: "Game of Thrones", release_date: "2016" },
-    { id: 4, title: "Hobbit", release_date: "2015" },
-  ];
+  useEffect(() => {
+    async function loadMovies() {
+      try {
+        const data = await getMovies();
+        setMovies(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadMovies();
+  }, []);
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    alert(searchQuery);
-    setSearchQuery("");
+    if (!searchQuery.trim()) return;
+    if (loading) return;
+
+    setLoading(true);
+    try {
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError(null);
+    } catch (err) {
+      console.log(err);
+      setError("Failed to search movies...");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="home">
+      <div className="welcome-banner">
+        <img src="/mochi_movie_banner.png" alt="Welcome to Mochi Movies" />;
+      </div>
+
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
@@ -31,15 +59,23 @@ function Home() {
           Search
         </button>
       </form>
-      <div className="movies-grid">
-        {movies.map(
-          (movie) => (
-            <MovieCard movie={movie} key={movie.id} />
-          ),
-          //map function iterates over the array to return the movies
-          //.key property as a unique identifier
-        )}
-      </div>
+      {error && <p className="error-message">{error}</p>}
+      {loading ? (
+        <p className="loading">Loading...</p>
+      ) : (
+        <>
+          <p className="movie-count">🍡 Showing {movies.length} movies</p>
+          <div className="movies-grid">
+            {movies.map(
+              (movie) => (
+                <MovieCard movie={movie} key={movie.id} />
+              ),
+              //map function iterates over the array to return the movies
+              //.key property as a unique identifier
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }

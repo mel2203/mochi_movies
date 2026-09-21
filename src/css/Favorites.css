@@ -1,0 +1,46 @@
+.favorites {
+  width: 100%;
+  padding: 3rem 0 1rem;
+}
+
+.favorites h2 {
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-family: "Fredoka", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  color: #4b315d;
+  letter-spacing: -.03em;
+}
+
+.favorites h2::before { content: "♡ "; color: #ff91bd; }
+
+.favorites-empty {
+  max-width: 650px;
+  margin: 5rem auto;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  border: 1px solid rgba(168,139,234,.2);
+  border-radius: 30px;
+  background: rgba(255,255,255,.7);
+  box-shadow: var(--mochi-shadow);
+}
+
+.favorites-empty h2 {
+  margin-bottom: .8rem;
+  font-size: 2rem;
+}
+
+.favorites-empty h2::before { content: "🍡 "; }
+
+.favorites-empty p {
+  color: #8c7598;
+  font-weight: 650;
+  line-height: 1.7;
+}
+
+.movies-grid > * { animation: fadeIn .4s ease-out both; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}

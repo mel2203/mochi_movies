@@ -1,0 +1,113 @@
+.movie-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(168, 139, 234, .16);
+  box-shadow: 0 12px 32px rgba(111, 74, 137, .10);
+  transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease;
+  animation: cardIn .45s ease both;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px) rotate(-.35deg);
+  box-shadow: 0 22px 45px rgba(111, 74, 137, .18);
+}
+
+.movie-poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  width: 100%;
+  overflow: hidden;
+  background: #eadfff;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.movie-card:hover .movie-poster img { transform: scale(1.055); }
+
+.movie-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: .9rem;
+  background: linear-gradient(to bottom, transparent 50%, rgba(53, 32, 72, .62));
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.movie-card:hover .movie-overlay { opacity: 1; }
+
+.favorite-btn {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 50%;
+  color: white;
+  background: rgba(65, 38, 83, .38);
+  backdrop-filter: blur(8px);
+  font-size: 1.15rem;
+  transition: .2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 145, 189, .88);
+}
+
+.favorite-btn.active {
+  color: white;
+  background: linear-gradient(135deg, #ff76ad, #a88bea);
+}
+
+.movie-info {
+  min-height: 68px;
+  padding: .85rem .9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.movie-info h3 {
+  overflow: hidden;
+  margin: 0;
+  color: #4c345e;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.movie-info h3::before {
+  content: "✦ ";
+  color: #ff91bd;
+  font-size: .7rem;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 560px) {
+  .movie-card { border-radius: 18px; }
+  .movie-info { min-height: 60px; padding: .65rem .7rem .75rem; }
+  .movie-info h3 { font-size: .9rem; }
+  .favorite-btn { width: 36px; height: 36px; top: .55rem; right: .55rem; }
+}
