@@ -1,16 +1,38 @@
-# React + Vite
+# 🍡 Mochi Movies 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A cute movie search website built with **React**. Find movies, browse results, and discover your next watch with Mochi! 🍿✨
 
-Currently, two official plugins are available:
+## 📸 Screenshot
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Mochi Movies Screenshot](mochi_movies_ss.png)
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🔎 Search for movies
+- 🎬 Browse movie results
+- 📊 Display number of movies found
+- 🍡 Kawaii Mochi-themed design
+- 📱 Responsive UI
 
-## Expanding the ESLint configuration
+## 🛠️ Built With
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- JavaScript
+- CSS
+- Vite
+- Movie API
+
+## 🚀 Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the local URL provided by Vite.
+
+## 👩🏻‍💻 Author
+
+**Lyana**
+
+Made with 🍡 + 🎬 + ✨
