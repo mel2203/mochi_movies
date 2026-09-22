@@ -29,8 +29,6 @@ npm install
 npm run dev
 ```
 
-Then open the local URL provided by Vite.
-
 ## 👩🏻‍💻 Author
 
 **Lyana**
